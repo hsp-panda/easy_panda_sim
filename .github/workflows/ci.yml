@@ -1,0 +1,22 @@
+name: ROS CI Workflow
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ros-tooling/setup-ros@0.1.0
+        with:
+          required-ros-distributions: melodic
+      - uses: ros-tooling/action-ros-ci@0.1.0
+        with:
+          package-name: easy_panda_sim
+          target-ros1-distro: melodic
+          vcs-repo-file-url: ""
