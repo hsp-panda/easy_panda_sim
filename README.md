@@ -49,4 +49,5 @@ roslaunch easy_panda_sim simulation.launch
 rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller --force-discover
 ```
 
+<p align="center"><img src="https://github.com/hsp-panda/easy_panda_sim/blob/master/assets/gazebo_rqt.png"/></p>
 
