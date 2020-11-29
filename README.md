@@ -14,4 +14,4 @@ This is a WIP:
 - [ ] provide basic Python and C++ examples
 - [ ] implement _fake_ Cartesian space control
 - [ ] make sure it works with [hsp-panda/panda_grasp_server](https://github.com/hsp-panda/panda_grasp_server)
-- [ ] fix CI
+- [x] fix CI
