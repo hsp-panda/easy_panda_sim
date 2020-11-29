@@ -18,15 +18,17 @@
         <arg name="headless" value="$(arg headless)"/>
     </include>
 
-    <!-- Load joint effort controller configurations from YAML file to parameter server -->
+    <!-- Load controller parameters to rosparam -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find easy_panda_sim)/robots/panda_arm_world.urdf.xacro"/>
     <rosparam file="$(find easy_panda_sim)/config/panda_control.yaml" command="load"/>
 
+    <!-- Spawn robot in the world -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model robot_description -J panda_joint1 0 -J panda_joint2 0 -J panda_joint3 0 -J panda_joint4 0 -J panda_joint5 0 -J panda_joint6 0 -J panda_joint7 0"/>
 
+    <!-- Spawn state publisher and joint trajectory generator -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller position_joint_trajectory_controller"/>
 
-    <!-- convert joint states to TF transforms for rviz, etc -->
+    <!-- Convert joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
 
 </launch>
