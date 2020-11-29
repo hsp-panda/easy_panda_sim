@@ -1,5 +1,7 @@
 # easy_panda_sim
 
+![CI badge](https://github.com/hsp-panda/easy_panda_sim/workflows/ROS%20CI%20Workflow/badge.svg)
+
 A lightweight ROS package for simulation with Franka Panda Emika on Gazebo
 
 ### Disclaimer
