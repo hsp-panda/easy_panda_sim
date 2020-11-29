@@ -1,6 +1,6 @@
-# easy-panda-sim
+# easy_panda_sim
 
-A lightweight package for simulation with Franka Panda Emika on Gazebo
+A lightweight ROS package for simulation with Franka Panda Emika on Gazebo
 
 ### Disclaimer
 
