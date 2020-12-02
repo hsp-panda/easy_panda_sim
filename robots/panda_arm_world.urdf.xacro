@@ -8,7 +8,7 @@
   <xacro:panda_arm />
 
   <xacro:include filename="$(find easy_panda_sim)/robots/hand.xacro"/>
-  <xacro:hand rpy="0 0 ${-pi/4}" connected_to="panda_link8"/>
+  <xacro:hand rpy="0 0 ${-pi/4}" robot_name="$(arg robot_name)" connected_to="panda_link8"/>
 
   <xacro:include filename="$(find easy_panda_sim)/robots/panda.gazebo.xacro"/>
   <xacro:panda_gazebo robot_name="$(arg robot_name)" />
