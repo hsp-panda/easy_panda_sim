@@ -62,6 +62,8 @@
         <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
       </inertial>
     </link>
+    <link name="${robot_name}_tcp">
+    </link>
     <joint name="${robot_name}_finger_joint1" type="prismatic">
       <parent link="${robot_name}_hand"/>
       <child link="${robot_name}_leftfinger"/>
@@ -76,6 +78,12 @@
       <axis xyz="0 -1 0"/>
       <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
       <mimic joint="${robot_name}_finger_joint1" />
+    </joint>
+    <joint name="${robot_name}_tcp_joint" type="fixed">
+      <parent link="${robot_name}_hand"/>
+      <child link="${robot_name}_tcp"/>
+      <origin xyz="0 0 0.12" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
     </joint>
   </xacro:macro>
 </robot>
