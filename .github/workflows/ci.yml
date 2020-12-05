@@ -17,6 +17,6 @@ jobs:
           required-ros-distributions: melodic
       - uses: ros-tooling/action-ros-ci@0.1.0
         with:
-          package-name: easy_panda_sim
+          package-name: easy_panda_sim franka_gripper_sim
           target-ros1-distro: melodic
           vcs-repo-file-url: ""
