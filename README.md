@@ -16,6 +16,7 @@ It has been tested on Ubuntu 18.04 with ROS Melodic.
 
 ### Missing features
 
+- Gripper control
 - Cartesian space control using ROS controllers
 - Python, C++ basic examples
 
