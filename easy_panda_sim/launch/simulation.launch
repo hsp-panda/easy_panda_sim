@@ -25,6 +25,9 @@
     <!-- Spawn robot in the world -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -unpause -model robot_description -J robot_description::panda_joint1 0 -J robot_description::panda_joint2 0 -J robot_description::panda_joint3 0 -J robot_description::panda_joint4 -1.15 -J robot_description::panda_joint5 0 -J robot_description::panda_joint6 1.45 -J robot_description::panda_joint7 0.9"/>
 
+    <!-- Run node simulating Franka gripper actions -->
+    <node name="franka_gripper" pkg="franka_gripper_sim" type="franka_gripper_sim_node"/>
+
     <!-- Spawn state publisher and joint trajectory generator -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller position_joint_trajectory_controller"/>
 
