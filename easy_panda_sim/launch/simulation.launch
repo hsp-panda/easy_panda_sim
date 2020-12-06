@@ -7,7 +7,6 @@
     <arg name="gui" default="true"/>
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
-    <arg name="load_gripper" default="false"/>
 
     <!--Launch Gazebo -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
