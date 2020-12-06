@@ -50,3 +50,10 @@ rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller --force-d
 ```
 
 <p align="center"><img src="https://github.com/hsp-panda/easy_panda_sim/blob/master/assets/gazebo_rqt.png"/></p>
+
+### Maintainers
+This repository is maintained by:
+
+| | |
+|:---:|:---:|
+| [<img src="https://github.com/xenvre.png" width="40">](https://github.com/xenvre) | [@xenvre](https://github.com/xenvre) |
