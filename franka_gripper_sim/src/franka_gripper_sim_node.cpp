@@ -20,7 +20,19 @@ int main(int argc, char** argv)
 
     franka_gripper_sim.start();
 
-    ros::spin();
+    /* 5fps are enough for gripper control. */
+    ros::Rate loop_rate(5);
+
+    while (ros::ok())
+    {
+        franka_gripper_sim.update();
+
+        ros::spinOnce();
+
+        loop_rate.sleep();
+    }
+
+    franka_gripper_sim.clean();
 
     return EXIT_SUCCESS;
 }

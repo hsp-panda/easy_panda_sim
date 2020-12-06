@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+    <!-- Joint trajectory controller configuration for the gripper -->
+    <rosparam file="$(find franka_gripper_sim)/config/franka_gripper_sim_control.yaml" command="load"/>
+
+    <!-- Joint trajectory generator for the gripper -->
+    <node name="controller_spawner_gripper" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="franka_gripper_sim_controller"/>
+
+    <!-- Run node simulating Franka gripper actions -->
+    <node name="franka_gripper" pkg="franka_gripper_sim" type="franka_gripper_sim_node" output="screen"/>
+
+</launch>

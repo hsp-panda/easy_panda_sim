@@ -11,10 +11,14 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>actionlib</build_depend>
+  <build_depend>control_msgs</build_depend>
   <build_depend>franka_gripper</build_depend>
+  <build_depend>trajectory_msgs</build_depend>
 
   <depend>roscpp</depend>
 
   <exec_depend>actionlib</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
 
 </package>

@@ -7,9 +7,14 @@
 
 #include <actionlib/server/simple_action_server.h>
 
+#include <control_msgs/JointTrajectoryControllerState.h>
+
 #include <franka_gripper/franka_gripper.h>
 
 #include <ros/node_handle.h>
+
+#include <mutex>
+#include <string>
 
 
 class FrankaGripperSim
@@ -22,8 +27,37 @@ public:
 
     void start();
 
+    void update();
+
+    void clean();
+
 private:
+
+    double wrap_width(const double& width);
+
+    ros::Duration evaluate_duration(const double& finger_position_desired, const double& finger_position_feedback, const double& speed);
+
+    void feedback_callback(const control_msgs::JointTrajectoryControllerStatePtr&);
+
+    const std::string command_topic_name_ = "/franka_gripper_sim_controller/command";
+
+    const std::string state_topic_name_ = "/franka_gripper_sim_controller/state";
+
+    double finger_position_des_ = 0.0;
+
+    double finger_position_fb_ = 0.0;
+
+    double max_width_ = 0.08;
+
+    std::mutex mutex_;
+
     ros::NodeHandle handle_;
+
+    ros::Publisher publisher_;
+
+    ros::Subscriber subscriber_;
+
+    ros::Duration duration_;
 
     actionlib::SimpleActionServer<franka_gripper::GraspAction> action_grasp_;
 

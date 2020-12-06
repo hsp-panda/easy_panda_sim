@@ -7,14 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(catkin REQUIRED COMPONENTS
   actionlib
+  control_msgs
   franka_gripper
   roscpp
+  trajectory_msgs
 )
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS roscpp
-                 actionlib
+  CATKIN_DEPENDS actionlib
+                 control_msgs
+                 roscpp
+                 trajectory_msgs
 )
 
 add_executable(franka_gripper_sim_node
