@@ -11,13 +11,14 @@ It has been tested on Ubuntu 18.04 with ROS Melodic.
 - ROS controllers:
   - [State publishing](https://github.com/hsp-panda/easy_panda_sim/blob/f7571525ecef6925dda269b56155ef1274a35b61/config/panda_control.yaml#L1) (`joint_state_controller`)
   - [Joint control](https://github.com/hsp-panda/easy_panda_sim/blob/f7571525ecef6925dda269b56155ef1274a35b61/config/panda_control.yaml#L5) (`position_joint_trajectory_controller`)
-- Support for Franka gripper actions `\franka_gripper\{homing, move, grasp}`
+- Support for Franka gripper actions `/franka_gripper/{homing, move, grasp}`
   - `grasp` and `move` support the parameters `width` and `speed`
 - Support for [hsp-panda/panda_grasp_server](https://github.com/hsp-panda/panda_grasp_server)
 
 
 ### Missing features
 
+- Support for parameters `force` , `epsilon.{inner, outer}` in action `/franka_gripper/grasp`
 - Cartesian space control using ROS controllers
 - Python, C++ basic examples
 
