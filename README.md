@@ -19,6 +19,7 @@ It has been tested on Ubuntu 18.04 with ROS Melodic.
 ### Missing features
 
 - Support for parameters `force` , `epsilon.{inner, outer}` in action `/franka_gripper/grasp`
+- Support for RGB-D vision
 - Cartesian space control using ROS controllers
 - Python, C++ basic examples
 
