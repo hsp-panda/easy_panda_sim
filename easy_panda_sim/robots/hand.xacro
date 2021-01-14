@@ -6,6 +6,7 @@
         <parent link="${connected_to}"/>
         <child link="${robot_name}_hand"/>
         <origin xyz="${xyz}" rpy="${rpy}"/>
+        <!-- <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/> -->
       </joint>
     </xacro:unless>
 

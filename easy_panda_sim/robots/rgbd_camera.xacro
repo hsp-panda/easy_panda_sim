@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rgdb_camera">
+
+  <xacro:macro name="rgbd_camera" params="robot_name description_pkg:='easy_panda_sim'">
+
+    <!-- <link name="${robot_name}_rgbd_camera_mount"> -->
+
+      <!-- <inertial> -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <!-- <mass value="0.1"/> -->
+        <!-- <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/> -->
+      <!-- </inertial> -->
+
+      <!-- <visual> -->
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://${description_pkg}/meshes/visual/rgbd_camera_mount.dae"/> -->
+        <!-- </geometry> -->
+      <!-- </visual> -->
+    <!-- </link> -->
+
+    <link name="${robot_name}_rgbd">
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.072"/>
+        <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
+      </inertial>
+
+      <visual>
+        <geometry>
+          <mesh filename="package://${description_pkg}/meshes/visual/rgbd_camera.dae"/>
+        </geometry>
+      </visual>
+
+    </link>
+
+    <link name="camera_color_optical_frame"/>
+
+    <link name="${robot_name}_rgb_gazebo"/>
+
+    <!--   <inertial> -->
+    <!--     <origin xyz="0 0 0" rpy="0 0 0"/> -->
+    <!--     <mass value="0.01"/> -->
+    <!--     <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/> -->
+    <!--   </inertial> -->
+    <!-- </link> -->
+
+    <!-- <joint name="${robot_name}_rgb_camera_mount_joint" type="fixed"> -->
+      <!-- <parent link="${robot_name}_hand"/> -->
+      <!-- <child link="${robot_name}_rgbd_camera_mount"/> -->
+      <!-- <origin xyz="0.007 0.068 0.007" rpy="0 0 -1.57079632679"/> -->
+    <!-- </joint> -->
+
+    <joint name="${robot_name}_rgbd_joint" type="fixed">
+      <parent link="${robot_name}_hand"/>
+      <child link="${robot_name}_rgbd"/>
+      <origin xyz="0.0565 0.00 0.0425" rpy="0 0 -1.57079632679"/>
+    </joint>
+
+    <joint name="${robot_name}_rgb_joint" type="fixed">
+      <parent link="${robot_name}_rgbd"/>
+      <child link="camera_color_optical_frame"/>
+      <origin xyz="0.035 0 0" rpy="0 0 3.14"/>
+    </joint>
+
+    <joint name="${robot_name}_rgb_gazebo_joint" type="fixed">
+      <parent link="camera_color_optical_frame"/>
+      <child link="${robot_name}_rgb_gazebo"/>
+      <origin xyz="0 0 0" rpy="0.0 -1.57079632679 1.57079632679"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>

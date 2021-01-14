@@ -19,7 +19,6 @@ It has been tested on Ubuntu 18.04 with ROS Melodic.
 ### Missing features
 
 - Support for parameters `force` , `epsilon.{inner, outer}` in action `/franka_gripper/grasp`
-- Support for RGB-D vision
 - Cartesian space control using ROS controllers
 - Python, C++ basic examples
 
@@ -38,7 +37,16 @@ source <catkin_ws>/devel/setup.bash
 ### How to run
 
 ```
-roslaunch easy_panda_sim simulation.launch
+roslaunch easy_panda_sim simulation.launch [enable_rgbd_camera:=true]
+```
+
+When `enable_rgbd_camera` is set to true the following topics are available (among the others):
+
+```
+/camera/color/camera_info (camera parameters)
+/camera/color/image_raw (RGB)
+/camera/depth/image_raw (depth)
+/camera/depth/color/points (point cloud)
 ```
 
 ### Test joint space control via GUI

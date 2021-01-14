@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
   <xacro:arg name="robot_name" default="panda"/>
+  <xacro:arg name="enable_rgdb_camera" default="false"/>
 
   <link name="world" />
+
+  <!-- robot -->
 
   <xacro:include filename="$(find easy_panda_sim)/robots/panda_arm.xacro"/>
   <xacro:panda_arm />
 
+  <!-- gripper -->
+
   <xacro:include filename="$(find easy_panda_sim)/robots/hand.xacro"/>
   <xacro:hand rpy="0 0 ${-pi/4}" robot_name="$(arg robot_name)" connected_to="panda_link8"/>
+
+  <!-- additional gazebo tags -->
 
   <xacro:include filename="$(find easy_panda_sim)/robots/panda.gazebo.xacro"/>
   <xacro:panda_gazebo robot_name="$(arg robot_name)" />
 
+  <!-- gazebo HW interfaces -->
+
   <xacro:include filename="$(find easy_panda_sim)/robots/panda.transmission.xacro"/>
   <xacro:panda_transmission robot_name="$(arg robot_name)" />
+
+  <!-- RGB-D camera -->
+
+  <xacro:if value="$(arg enable_rgbd_camera)">
+
+    <xacro:include filename="$(find easy_panda_sim)/robots/rgbd_camera.xacro"/>
+    <xacro:rgbd_camera robot_name="$(arg robot_name)" />
+
+    <xacro:include filename="$(find easy_panda_sim)/robots/rgbd_camera.gazebo.xacro"/>
+    <xacro:rgbd_camera_gazebo robot_name="$(arg robot_name)" />
+
+  </xacro:if>
 
 </robot>

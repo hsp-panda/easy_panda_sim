@@ -8,6 +8,9 @@
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
 
+    <!-- Arguments for depth camera (defaulting to a RealSense D415-like camera) -->
+    <arg name="enable_rgbd_camera" default="false"/>
+
     <!--Launch Gazebo -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
       	<arg name="debug" value="$(arg debug)"/>
@@ -15,10 +18,12 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="headless" value="$(arg headless)"/>
+        <arg name="verbose" value="true"/>
     </include>
 
     <!-- Load controller parameters to rosparam -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find easy_panda_sim)/robots/panda_arm_world.urdf.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find easy_panda_sim)/robots/panda_arm_world.urdf.xacro' enable_rgbd_camera:=$(arg enable_rgbd_camera)" />
+
     <rosparam file="$(find easy_panda_sim)/config/panda_control.yaml" command="load"/>
 
     <!-- Spawn robot in the world -->
